@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: support-db
+    environment:
+      POSTGRES_DB: ${DB_NAME:-support}
+      POSTGRES_USER: ${DB_USERNAME:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-devpass}
+    ports:
+      - "5432:5432"
+    volumes:
+      - support_db_data:/var/lib/postgresql/data
+
+volumes:
+  support_db_data:
